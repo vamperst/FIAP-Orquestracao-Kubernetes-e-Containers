@@ -1,5 +1,8 @@
 ## Conteiners 1.3 - Registry
 
+**Antes de começar, execute os passos abaixo para configurar o ambiente caso não tenha feito isso ainda na aula de HOJE: [Preparando Credenciais](../../01-create-codespaces/Inicio-de-aula.md)**
+
+
 1. No codespaces execute o comando `cd /home/vscode && git clone https://github.com/vamperst/pyhton-app-docker-test.git`, e após entre na pasta criada com o comando `cd pyhton-app-docker-test/`
 ![img/gitclone.png](img/gitclone.png)
 3. Mude de branch do repositório com o sequinte comando `git fetch && git checkout registry`
