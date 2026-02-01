@@ -91,6 +91,90 @@ docker push $accountID.dkr.ecr.us-east-1.amazonaws.com/primeiraimagem:1.1
 
 ![](img/6.png)
 
+<details>
+<summary> 
+<b>Explicação docker push </b>
+
+</summary>
+
+<blockquote>
+O comando `docker push $accountID.dkr.ecr.us-east-1.amazonaws.com/primeiraimagem:1.1` é utilizado para **enviar (publicar) uma imagem Docker local para um repositório remoto no Amazon Elastic Container Registry (ECR)**. Esse passo é fundamental para disponibilizar a imagem para uso em serviços da AWS, como ECS, EKS ou outras execuções distribuídas.
+
+### Sintaxe básica
+
+    docker push REPOSITORY_URI:TAG
+
+No exemplo:
+
+    docker push $accountID.dkr.ecr.us-east-1.amazonaws.com/primeiraimagem:1.1
+
+### Entendendo o endereço do repositório ECR
+
+O endereço da imagem segue o padrão do Amazon ECR:
+
+    <account_id>.dkr.ecr.<region>.amazonaws.com/<repository>:<tag>
+
+No exemplo:
+
+- `$accountID` → ID da conta AWS onde o ECR está criado.
+- `us-east-1` → região AWS do repositório.
+- `primeiraimagem` → nome do repositório no ECR.
+- `1.1` → tag (versão) da imagem.
+
+Esse endereço identifica de forma única onde a imagem será armazenada dentro da AWS.
+
+### O que o comando `docker push` faz
+
+Ao executar o comando, o Docker:
+
+1. Verifica se a imagem existe localmente com esse nome e tag.
+2. Valida a autenticação com o registro remoto (ECR).
+3. Envia as camadas (layers) da imagem para o repositório.
+4. Reutiliza camadas já existentes no ECR, se houver, para otimizar o envio.
+5. Finaliza o push quando todas as camadas necessárias forem enviadas.
+
+### Pré-requisitos importantes
+
+Antes de executar `docker push` para o ECR, é necessário:
+
+- Ter o repositório ECR previamente criado.
+- Estar autenticado no ECR usando a AWS CLI.
+
+Autenticação típica no ECR:
+
+    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $accountID.dkr.ecr.us-east-1.amazonaws.com
+
+Sem essa autenticação, o push falhará por falta de permissão.
+
+Documentação oficial:  
+https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html
+
+### Por que enviar imagens para o ECR
+
+O Amazon ECR é um registro de imagens totalmente gerenciado pela AWS e oferece:
+
+- Integração nativa com ECS, EKS e outros serviços AWS.
+- Controle de acesso via IAM.
+- Alta disponibilidade e escalabilidade.
+- Versionamento de imagens por tags.
+
+Publicar imagens no ECR é o padrão recomendado quando se trabalha com containers na AWS.
+
+### Documentação oficial
+
+- Docker CLI – `docker push`:  
+  https://docs.docker.com/engine/reference/commandline/push/
+- Amazon ECR – Conceitos básicos:  
+  https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+- Enviando imagens para o ECR:  
+  https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
+### Conclusão
+
+O comando `docker push $accountID.dkr.ecr.us-east-1.amazonaws.com/primeiraimagem:1.1` publica uma imagem Docker versionada no Amazon ECR, tornando-a disponível para uso em serviços da AWS. Esse passo conecta o desenvolvimento local ao ambiente de execução em nuvem, sendo essencial no fluxo de aplicações containerizadas na AWS.
+
+</blockquote>
+</details>
 
 20. Olhe no ECR as novas tags existentes. Abra o [link](https://us-east-1.console.aws.amazon.com/ecr/private-registry/repositories?region=us-east-1) no navegador e clique em `primeiraimagem`
     
