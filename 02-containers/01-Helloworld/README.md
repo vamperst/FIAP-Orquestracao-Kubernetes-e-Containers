@@ -465,7 +465,7 @@ O uso combinado de `docker container stop` e `docker container rm` representa o 
 
 <details>
 <summary> 
-<b>Explicação docker container stop e rm </b>
+<b>Explicação docker system prune -a </b>
 
 </summary>
 
