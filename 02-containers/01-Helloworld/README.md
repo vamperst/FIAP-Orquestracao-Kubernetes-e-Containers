@@ -77,6 +77,8 @@ Essa saída confirma que:
 O comando `docker run hello-world` é essencial para validar se o Docker está corretamente instalado e operacional. Ele confirma todo o fluxo básico do Docker, desde o download de imagens até a criação e execução de containers, sendo um ponto de partida ideal para quem está aprendendo a tecnologia.
 </blockquote>
 
+</details>
+
 2. Suba um container ubuntu em entre nele na maneira interativa com o comando `docker run -ti ubuntu bash`. A opções "-ti" são as responsáveis por após a criação do container fazer o acesso a ele através do terminal.
 
 ![img/ubuntubash.png](img/ubuntubash.png)
@@ -159,6 +161,8 @@ ou pressionando `Ctrl + D`, o processo `bash` é finalizado e, como ele é o pro
 
 O uso das opções `-ti` no comando `docker run` é essencial sempre que for necessário **interagir manualmente com um container**, especialmente para acessar shells como o `bash`. Elas garantem que o container aceite comandos do usuário e responda corretamente no terminal, tornando o Docker uma ferramenta prática para testes, aprendizado e depuração de ambientes Linux.
 </blockquote>
+
+</details>
 
 
 1.  Saia do container digitando `exit`
@@ -253,6 +257,8 @@ Ambos os comandos são equivalentes em funcionalidade quando as mesmas opções 
 O comando `docker container ls -a` é essencial para a administração de containers Docker, pois fornece uma visão completa de todos os containers existentes no ambiente, permitindo controle, diagnóstico e limpeza adequada do ambiente de containers.
 </blockquote>
 
+</details>
+
 9. Utilize o comando `docker image ls` para ver todos as imagens do host
 
 ![img/dockerimagels.png](img/dockerimagels.png)
@@ -334,6 +340,8 @@ Exemplo de saída simplificada:
 
 O comando `docker image ls` é fundamental para entender quais imagens estão disponíveis localmente no Docker. Ele oferece visibilidade sobre versões, tamanhos e uso de imagens, sendo uma ferramenta indispensável para organização e manutenção do ambiente Docker.
 </blockquote>
+
+</details>
 
 10. Agora que temos 2 containers iguais rodando, vamos parar e eliminar um deles com os seguintes comandos `docker container stop ubuntu-teste` e `docker container rm ubuntu-teste`
 
@@ -425,6 +433,8 @@ https://docs.docker.com/engine/reference/commandline/container_rm/#force-remove-
 
 O uso combinado de `docker container stop` e `docker container rm` representa o fluxo correto e seguro para encerrar e remover containers Docker. Esse padrão ajuda a manter o ambiente organizado, evita conflitos de nomes e garante que recursos não utilizados sejam corretamente liberados.
 </blockquote>
+
+</details>
 
 11. Agora com o comando `docker container ls -a` podemos ver que temos apenas 2 containers na maquina. Um ativo e um inativo.
 
@@ -536,3 +546,5 @@ Por esse motivo, ele deve ser usado com atenção, principalmente em ambientes p
 
 O comando `docker system prune -a` é uma ferramenta poderosa para limpeza completa do ambiente Docker. Ele ajuda a recuperar espaço em disco e manter o sistema organizado, mas deve ser usado com cuidado, pois remove imagens e recursos que podem precisar ser recriados posteriormente.
 </blockquote>
+
+</details>
