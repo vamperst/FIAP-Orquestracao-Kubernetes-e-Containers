@@ -67,7 +67,9 @@
 
 18. Utilize o comando abaixo para visualizar onde estão rodando cada container de serviço no cluster.
     ```
-    publicC9Ip=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4` && echo "http://$publicC9Ip:8080"
+    TOKEN=$(curl -sX PUT "http://169.254.169.254/latest/api/token" \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+    publicC9Ip=`curl -sH "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-ipv4` && echo "http://$publicC9Ip:8080"
     ```
     
     ![img/visualizer.png](img/visualizer.png)
